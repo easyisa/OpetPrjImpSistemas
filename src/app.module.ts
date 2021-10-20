@@ -1,10 +1,14 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { getConnectionOptions } from 'typeorm'
+import { UserModule } from './modules/user/user.module'
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRootAsync({
+      useFactory: async () => await getConnectionOptions()
+    }),
+    UserModule
+  ]
 })
 export class AppModule {}
