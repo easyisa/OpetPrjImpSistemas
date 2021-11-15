@@ -1,7 +1,8 @@
 import { AuditableEntity } from 'src/shared/entities'
 import { City, State } from 'src/shared/enums'
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { AfterInsert, Column, Entity, getConnection, PrimaryGeneratedColumn } from 'typeorm'
 import { AnimalSize, AnimalType, Gender } from '../enum'
+import { AnimalLog } from './animalLog.entity'
 
 @Entity({ schema: 'public' })
 export class Animal extends AuditableEntity {
@@ -31,4 +32,12 @@ export class Animal extends AuditableEntity {
 
   @Column('varchar')
   state: State
+
+  @AfterInsert()
+  async createLog() {
+    const log = new AnimalLog()
+    log.userId = this.id
+    log.createdAt = new Date()
+    getConnection().manager.save(log)
+  }
 }
