@@ -1,6 +1,6 @@
 import { AuditableEntity } from 'src/shared/entities'
-import { City } from 'src/shared/entities/city'
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { City, State } from 'src/shared/enums'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 import { AnimalSize, AnimalType, Gender } from '../enum'
 
 @Entity({ schema: 'public' })
@@ -26,7 +26,9 @@ export class Animal extends AuditableEntity {
   @Column('varchar')
   size: AnimalSize
 
-  @ManyToOne(() => City)
-  @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
-  public city: City
+  @Column('varchar')
+  city: City
+
+  @Column('varchar')
+  state: State
 }

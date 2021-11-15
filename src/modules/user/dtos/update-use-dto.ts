@@ -1,19 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsString } from 'class-validator'
 import { City } from 'src/shared/enums'
-import { DocumentType } from '../enums/documentType'
 
-export class CreateUserDto {
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  documentType: DocumentType
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  documentNumber: string
-
+export class UpdateUserDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
@@ -22,7 +11,7 @@ export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  email: string
+  id: string
 
   @ApiProperty()
   @IsNotEmpty()
@@ -33,11 +22,6 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   birthday: Date
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  password: string
 
   @ApiProperty()
   @IsNotEmpty()

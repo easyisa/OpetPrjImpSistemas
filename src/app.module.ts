@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { getConnectionOptions } from 'typeorm'
+import { AnimalModule } from './modules/animals/animals.module'
 import { UserModule } from './modules/user/user.module'
 
 @Module({
@@ -8,7 +9,8 @@ import { UserModule } from './modules/user/user.module'
     TypeOrmModule.forRootAsync({
       useFactory: async () => await getConnectionOptions()
     }),
-    UserModule
+    UserModule,
+    AnimalModule
   ]
 })
 export class AppModule {}

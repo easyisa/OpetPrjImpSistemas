@@ -1,7 +1,8 @@
 import { AuditableEntity } from 'src/shared/entities/auditable'
-import { City } from 'src/shared/entities/city'
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import {} from 'src/shared/entities'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 import { DocumentType } from '../enums/documentType'
+import { State, City } from 'src/shared/enums'
 
 @Entity({ schema: 'public' })
 export class User extends AuditableEntity {
@@ -29,7 +30,9 @@ export class User extends AuditableEntity {
   @Column('varchar')
   password: string
 
-  @ManyToOne(() => City)
-  @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
-  public city: City
+  @Column('varchar')
+  city: City
+
+  @Column('varchar')
+  state: State
 }
