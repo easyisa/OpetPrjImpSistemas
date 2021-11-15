@@ -1,33 +1,30 @@
-import { AuditableEntity } from 'src/shared/entities/auditable'
+import { AuditableEntity } from 'src/shared/entities'
 import { City } from 'src/shared/entities/city'
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
-import { DocumentType } from '../enums/documentType'
+import { AnimalSize, AnimalType, Gender } from '../enum'
 
 @Entity({ schema: 'public' })
-export class User extends AuditableEntity {
+export class Animal extends AuditableEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
-
-  @Column('varchar')
-  documentType: DocumentType
-
-  @Column('varchar')
-  documentNumber: string
 
   @Column('varchar')
   name: string
 
   @Column('varchar')
-  email: string
+  mounths: string
 
   @Column('varchar')
-  phone: string
+  years: string
 
   @Column('varchar')
-  birthday: Date
+  type: AnimalType
 
   @Column('varchar')
-  password: string
+  gender: Gender
+
+  @Column('varchar')
+  size: AnimalSize
 
   @ManyToOne(() => City)
   @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
