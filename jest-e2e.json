@@ -1,0 +1,17 @@
+{
+  "globalSetup": "./test/globalSetup.js",
+  "setupFilesAfterEnv": ["./test/setup.js"],
+  "moduleNameMapper": {
+    "@shared/(.*)": "<rootDir>/src/shared/$1",
+    "@config/(.*)": "<rootDir>/src/config/$1",
+    "@modules/(.*)": "<rootDir>/src/modules/$1",
+    "@test/(.*)": "<rootDir>/test/$1"
+  },
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t)s$": "ts-jest"
+  }
+}

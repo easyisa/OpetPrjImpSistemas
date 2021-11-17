@@ -43,6 +43,7 @@ export class CreateUserService {
     newUser.phone = createUserDto.phone
     newUser.email = createUserDto.email
     newUser.city = createUserDto.city
+    newUser.state = createUserDto.state
     newUser.birthday = createUserDto.birthday
     newUser.documentNumber = createUserDto.documentNumber
     newUser.documentType = DocumentType.CPF

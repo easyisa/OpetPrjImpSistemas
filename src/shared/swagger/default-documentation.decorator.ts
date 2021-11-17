@@ -1,6 +1,7 @@
 import { applyDecorators } from '@nestjs/common'
 import {
   ApiBadRequestResponse,
+  ApiCreatedResponse,
   ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOperation,
@@ -10,7 +11,7 @@ import {
 export function DefaultCreateEntityDocumentation(entity: string, summary = '') {
   return applyDecorators(
     ApiOperation({ summary }),
-    ApiNoContentResponse({
+    ApiCreatedResponse({
       description: `${entity} foi criado com sucesso.`
     }),
     ApiBadRequestResponse({ description: 'Requisição errada do frontend' }),
