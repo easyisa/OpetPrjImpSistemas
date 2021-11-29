@@ -16,8 +16,8 @@ export class CreateAnimalService {
     })
   }
   private async createWithTransaction(createAnimalDto: CreateAnimalDto, manager: EntityManager) {
-    await this.createAnimal(createAnimalDto, manager)
-    return
+    const animal = await this.createAnimal(createAnimalDto, manager)
+    return animal
   }
 
   private async createAnimal(createAnimalDto: CreateAnimalDto, manager: EntityManager) {
@@ -31,7 +31,7 @@ export class CreateAnimalService {
     animal.city = createAnimalDto.city
     animal.state = createAnimalDto.state
 
-    await manager.save(animal)
-    return
+    const createdAnimal = await manager.save(animal)
+    return createdAnimal
   }
 }
