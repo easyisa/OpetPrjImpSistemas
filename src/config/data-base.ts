@@ -15,10 +15,10 @@ export const prodConfig = {
 
 export const testConfig = {
   type: 'postgres',
-  host: process.env.TYPEORM_HOST,
-  port: process.env.TYPEORM_PORT,
-  username: process.env.TYPEORM_USERNAME,
-  password: process.env.TYPEORM_PASSWORD,
+  host: 'localhost',
+  port: '5432',
+  username: 'root',
+  password: 'root',
   e2eDatabase: 'teste'
 }
 // export const testConfigur = {

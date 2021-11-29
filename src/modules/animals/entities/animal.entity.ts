@@ -1,3 +1,4 @@
+import { IsNotEmpty, IsString } from 'class-validator'
 import { AuditableEntity } from 'src/shared/entities'
 import { City, State } from 'src/shared/enums'
 import { AfterInsert, Column, Entity, getConnection, PrimaryGeneratedColumn } from 'typeorm'
@@ -10,6 +11,8 @@ export class Animal extends AuditableEntity {
   id: string
 
   @Column('varchar')
+  @IsString()
+  @IsNotEmpty()
   name: string
 
   @Column('varchar')
